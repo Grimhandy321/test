@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { AppShell, Burger, createTheme, MantineProvider, PasswordInput } from '@mantine/core';
 import './App.css'
-import { Title } from './components/Title'
-import { BgColor } from './components/BgColor'
-import { UserCard } from './components/UserCard'
+import CustomPasswordnIput, { CustomPasswordInput } from './components/CustomPasswordInput'
+import '@mantine/core/styles.css';
+import { useDisclosure } from '@mantine/hooks';
+import CustomPasswordnInput from './components/CustomPasswordInput';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   const user1 = {
     name: 'Jan Novák',
@@ -22,21 +22,36 @@ function App() {
     email: 'anna.dvorakova@example.com'
   };
 
+  const theme = createTheme({});
+  const [opened, { toggle }] = useDisclosure();
+
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      <Title text="Můj první nadpis" />
-      <Title text="Druhý nadpis" color="blue" />
-      <Title text="Třetí nadpis" color="green" />
-      <UserCard user={user1} />
-      <UserCard user={user2} />
-      <BgColor />
-    </div>
-    </>
-  )
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !opened },
+      }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          hiddenFrom="sm"
+          size="sm"
+        />
+        <div>Logo</div>
+      </AppShell.Header>
+
+      <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
+
+      <AppShell.Main>
+        <CustomPasswordInput/>
+      </AppShell.Main>
+    </AppShell>
+  );
 }
 
 export default App
