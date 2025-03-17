@@ -39,14 +39,14 @@ export function CustomPasswordInput() {
   ];
 
   function getStrength(password: string) {
-    let multiplier = password.length > 5 ? 0 : 1;
+    let count = 0
     requirements.forEach((requirement) => {
       if(requirement.check(password)){
-          multiplier += 1;
+          count += 100 / requirements.length 
         }
       }
     );
-    return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 10);
+    return count;
   }
 
   useEffect(() => {
