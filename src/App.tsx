@@ -1,9 +1,9 @@
 import { AppShell, Burger, createTheme, MantineProvider, PasswordInput } from '@mantine/core';
 import './App.css'
-import CustomPasswordnIput, { CustomPasswordInput } from './components/CustomPasswordInput'
+import { CustomPasswordInput } from './components/CustomPasswordInput'
 import '@mantine/core/styles.css';
 import { useDisclosure } from '@mantine/hooks';
-import CustomPasswordnInput from './components/CustomPasswordInput';
+import Game2048 from './components/2048';
 
 function App() {
 
@@ -46,9 +46,8 @@ function App() {
       </AppShell.Header>
 
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
-
       <AppShell.Main>
-        <CustomPasswordInput/>
+        <Game2048/>
       </AppShell.Main>
     </AppShell>
   );

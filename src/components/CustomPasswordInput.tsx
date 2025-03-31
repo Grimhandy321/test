@@ -28,8 +28,8 @@ const countries = ["AD","AE","AF","AG","AI","AL","AM","AO","AQ","AR","AS","AT","
 export function CustomPasswordInput() {
   const [popoverOpened, setPopoverOpened] = useState(false);
   const [value, setValue] = useState('');
-  const [randomCountri,setRandomCountri] = useState(countries[Math.floor(Math.random() * countries.length)]);
-
+  //const [randomCountri,setRandomCountri] = useState(countries[Math.floor(Math.random() * countries.length)]);
+  const [randomCountri,setRandomCountri] = useState("BG");
   const requirements: {check: (value: string) => boolean, label:string}[] = [
     {  check: (value : string) =>  /[0-9]/.test(value), label: 'Includes number' },
     {  check: (value : string) =>  /[a-z]/.test(value), label: 'Includes lowercase letter' },
@@ -66,7 +66,7 @@ export function CustomPasswordInput() {
           return prevPassword;
         }
       });
-    }, 1000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
