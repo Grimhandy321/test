@@ -4,8 +4,14 @@ import { CustomPasswordInput } from './components/CustomPasswordInput'
 import '@mantine/core/styles.css';
 import { useDisclosure } from '@mantine/hooks';
 import Game2048 from './components/2048';
+import { Button } from '@mantine/core';
+import { useMantineColorScheme } from '@mantine/core';
+import { Sun, Moon } from 'lucide-react';
 
 function App() {
+  const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === 'dark';
+
 
   const user1 = {
     name: 'Jan Novák',
@@ -42,7 +48,12 @@ function App() {
           hiddenFrom="sm"
           size="sm"
         />
-        <div>Logo</div>
+            <Button 
+      onClick={() => setColorScheme(isDark ? 'light' : 'dark')} 
+      leftSection={isDark ? <Sun size={16} /> : <Moon size={16} />}
+    >
+      {isDark ? 'Light Mode' : 'Dark Mode'}
+    </Button>
       </AppShell.Header>
 
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
